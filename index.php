@@ -1,7 +1,7 @@
 <?php
 	if (empty($_GET['pagina'])) {
 		
-		$pagina = "login";
+		$pagina = "inicio";
 	} else {
 		$pagina = $_GET['pagina'];
 	}

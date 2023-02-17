@@ -1,11 +1,18 @@
+const formulario = document.getElementById('formulario'); //declarando una constante con la id formulario
 const inputs = document.querySelectorAll('#formulario input'); //declarando una constante con todos los inputs dentro de la id formulario
+
 
 const expresiones = { //objeto con varias expresiones regulares
  
-  nombre: /^[a-zA-ZÀ-ÿ\s]{3,20}$/,
+  nombre: /^[a-zA-ZÀ-ÿ\s]{5,20}$/,
   //expresion regular de codigo de usuario
 }
 
+const campos = {
+
+  nombre: false,
+
+}
 const ValidarFormulario = (e) => {
   switch (e.target.name) {
   

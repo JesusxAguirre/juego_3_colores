@@ -6,10 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ingresar como jugador</title>
-  <link rel="stylesheet" href="./static/css/bootstrap.min.css">
-  <link rel="stylesheet" href="./static/css/login.css">
+  <link rel="stylesheet" href="static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="static/css/login.css">
 
-  <script src="./static/js/jquery-3.6.0.min.js"></script>
+  <script src="static/js/jquery-3.6.0.min.js"></script>
+  <script src="static/js/sweetalert2.js"></script>
 </head>
 
 <body class="h-100">
@@ -26,14 +27,14 @@
                       <img class="rounded-circle" src="./static/img/control1.jpg" style="width: 185px;" alt="logo">
                       <h4 class="mt-1 mb-5 pb-1">¡Bienvenido al juego de pulsar los recuadros!</h4>
                     </div>
-                    <form id="formulario" method="post" action="?pagina=login.php">
-                      <div class="form-outline mb-4" id="grupo__nombre">
+                    <form id="formulario" method="post" action="?pagina=login">
+                      <div class="col-sm mb-4" id="grupo__nombre">
                         <div class="relative">
                           <i class="input-icon fs-5"></i>
-                          <label class="form-label" for="form2Example11">Nombre de jugador</label>
+                          <label class="form-label"  for="">Nombre de jugador</label>
                           <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Jugadora 1" />
                         </div>
-                        <p class="text-danger d-none">Este campo no puede estar vacio</p>
+                        <p class="text-danger d-none">Debes escribir al menos 5 letras sin numeros ni caracteres especiales</p>
                       </div>
 
                       <div class="text-center pt-1 mb-5 pb-1">
@@ -59,7 +60,10 @@
       </div>
     </section>
   </div>
-  <script src="static/login.js" ></script>
+  <script type="text/javascript">
+    error = <?php echo ($error) ? 'true' : 'false'; ?>
+  </script>
+  <script src="static/js/login.js"></script>
 </body>
 
 </html>
