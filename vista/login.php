@@ -7,6 +7,7 @@
   <title>Ingresar como jugador</title>
   <link rel="stylesheet" href="./static/css/bootstrap.min.css">
   <link rel="stylesheet" href="./static/css/login.css">
+  <script src="./static/js/jquery-3.6.0.min.js"></script>
 </head>
 <body class="h-100">
   <div class="container-fluid ">
@@ -23,12 +24,15 @@
                     style="width: 185px;" alt="logo">
                   <h4 class="mt-1 mb-5 pb-1">¡Bienvenido al juego de pulsar los recuadros!</h4>
                 </div>
-                <form id="formulario">
-                  <div class="form-outline mb-4">
+                <form id="formulario" method="post">
+                  <div class="form-outline mb-4" id="grupo__nombre">
+                  <div class="relative">
+                  <i class="input-icon fs-5"></i>
                   <label class="form-label" for="form2Example11">Nombre de jugador</label>
                     <input type="email" id="form2Example11" class="form-control"
                       placeholder="Jugadora 1" />
-                    
+                      </div>
+                    <p class="text-danger d-none">Este campo no puede estar vacio</p>
                   </div>
 
                   

@@ -1,3 +1,31 @@
+.input-icon{
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	left: 93%;
+	top: 70.5%;
+	transform: translateY(-67.5%);
+}
+.input-icon2{
+	position: absolute;
+	width: 20px;
+	height: 20px;
+  left: 93%;
+	top: 70.5%;
+	transform: translateY(-67.5%);
+}
+
+.relative{
+    position: relative;
+}
+
+.text-check{
+  color: #05e08c	;
+}
+
+
+
+
 .gradient-custom-2 {
   /* fallback for old browsers */
   background: #fccb90;
