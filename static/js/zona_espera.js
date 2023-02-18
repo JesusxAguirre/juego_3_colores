@@ -11,14 +11,23 @@ objeto_websocket.onopen = function (e) {//cuando la conexion se abre
     if(contador == 2){
         contador =0
         
-        var data{
-            nombre_usuario = nombre_usuario
+        var data = {
+            event: "iniciando juego",
+            nombre_usuario: nombre_usuario,
         }
         console.log(data)
         objeto_websocket.send(JSON.stringify(data))
     }
 
 }
+
+
+objeto_websocket.onmessage = function (e) {
+    console.log(e.data);
+    var data = JSON.parse(e.data);
+    console.log(data)
+    
+  }
 
 
 

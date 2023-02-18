@@ -6,6 +6,7 @@ use Usuarios;
 
 
 $usuarios= array();
+$jugadores = array();
 class Chat implements MessageComponentInterface {
     protected $clients;
 
@@ -22,41 +23,26 @@ class Chat implements MessageComponentInterface {
       global $usuarios;
       $this->clients->attach($conn);
       $fecha_actual = date("d-m-Y h:i:s");
-      $usuarios["id_usuario"]=$conn->resourceId;
-      
+      //$usuarios["id_usuario"]=$conn->resourceId;
+
   
-      foreach($this->clients as $client){
-        $client->send(json_encode($usuarios));
-      }
       echo "Nueva conexion $fecha_actual ({$conn->resourceId})  \n";
     }
     
 
     public function onMessage(ConnectionInterface $from, $msg) {
-       global $data;
+       global $usuarios;
+       global $jugadores;
        $numRecv = count($this->clients) - 1;
        echo sprintf('El usuario %d esta enviando el mensaje: "%s" to %d other connection%s' . "\n"
       , $from->resourceId, $msg, $numRecv, $numRecv == 1 ? '' : 's');
       
       
-      $data[$from->resourceId]=  json_decode($msg,true);
-     
-      $nombre_usuario = $data[$from->resourceId]["from"];
-     
-      //$user_cedula = $datos_usuario[0]["cedula"];
-      $data[$from->resourceId]["date"] = date("d-m-y h:i:s");
-      
-      foreach($this->clients as $client){
-        /* if ($from !== $client){
-          $client->send($msg);
-        } */
-        if($from == $client){
-          $data[$from->resourceId]["from"] = "Yo";
-        }else{
-          $data[$from->resourceId]["from"] = $nombre_usuario;
+      $usuarios[$from->resourceId]=  json_decode($msg,true);
+         
+        foreach($this->clients as $client){
+          $client->send(json_encode($usuarios));
         }
-        $client->send(json_encode($data[$from->resourceId]));
-      }
     } 
 
     public function onClose(ConnectionInterface $conn) {
