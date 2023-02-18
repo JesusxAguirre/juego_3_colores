@@ -10,6 +10,10 @@ if ($_SESSION['jugador']){
 }
 
 if (is_file('vista/'.$pagina.'.php')) {
+
+    $matriz_usuarios = json_decode($_POST['json']);
+
+    print($matriz_usuarios);
    
     require_once 'vista/'.$pagina.'.php';
 }else {

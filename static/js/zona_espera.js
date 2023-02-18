@@ -22,7 +22,10 @@ objeto_websocket.onmessage = function (e) {
     console.log(data)
 
     if(data.nombre_usuario == nombre_usuario){
-    window.location = "index.php?pagina=juego";
+        sendJSON = JSON.stringify(data);
+
+        document.getElementsByTagName('json').value = sendJSON;
+        document.form[0].submit();
     }
   }
 

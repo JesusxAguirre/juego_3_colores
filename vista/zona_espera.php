@@ -26,6 +26,9 @@
       </div>
    
   </div>
+<form action="?pagina=juego">
+  <input hidden type="text" name="json">
+</form>
 <input hidden type="text" value="<?php echo $_SESSION['jugador']; ?>">
 <script src="static/js/zona_espera.js"></script>
 </body>
