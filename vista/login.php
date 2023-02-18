@@ -34,7 +34,7 @@
                           <label class="form-label"  for="">Nombre de jugador</label>
                           <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Jugadora 1" />
                         </div>
-                        <p class="text-danger d-none">Debes escribir al menos 5 letras sin numeros ni caracteres especiales</p>
+                        <p class="text-danger d-none">Debes escribir al menos 4 letras sin numeros ni caracteres especiales</p>
                       </div>
 
                       <div class="text-center pt-1 mb-5 pb-1">

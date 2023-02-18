@@ -6,10 +6,6 @@ var nombre_usuario = $("#usuario").val()
 
 
 objeto_websocket.onopen = function (e) {//cuando la conexion se abre 
-   
-   
-    if(contador == 2){
-        
         
         var data = {
             event: "iniciando juego",
@@ -17,8 +13,6 @@ objeto_websocket.onopen = function (e) {//cuando la conexion se abre
         }
         console.log(data)
         objeto_websocket.send(JSON.stringify(data))
-    }
-
 }
 
 

@@ -4,7 +4,7 @@ const inputs = document.querySelectorAll('#formulario input'); //declarando una 
 
 const expresiones = { //objeto con varias expresiones regulares
  
-  nombre: /^[a-zA-ZÀ-ÿ\s]{5,20}$/,
+  nombre: /^[a-zA-ZÀ-ÿ\s]{4,20}$/,
   //expresion regular de codigo de usuario
 }
 
