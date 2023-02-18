@@ -6,7 +6,7 @@ use Usuarios;
 
 
 $usuarios= array();
-
+$usuarios_colores = array();
 $contador = 0;
 class Chat implements MessageComponentInterface {
     protected $clients;
@@ -22,6 +22,7 @@ class Chat implements MessageComponentInterface {
   
     public function onOpen(ConnectionInterface $conn) {
       global  $contador;
+      global  $usuarios_colores;
       $contador++;
       $this->clients->attach($conn);
       $fecha_actual = date("d-m-Y h:i:s");
@@ -35,9 +36,10 @@ class Chat implements MessageComponentInterface {
         $i = rand(0, $count);
         echo "Entro a el bucle asdasdas ({$conn->resourceId})  \n";
         
-          $usuarios["color"] =   $background_colors[$i];
-          $usuarios["id"] = $conn->resourceId;
-          $conn->send(json_encode($usuarios));
+          $usuarios_colores[$conn->resourceId]["color"] =   $background_colors[$i];
+          $usuarios_colores[$conn->resourceId]["event"] =   "jugando";
+          $usuarios_colores[$conn->resourceId]["id"] = $conn->resourceId;
+          $conn->send(json_encode($usuarios_colores[$conn->resourceId]));
         
        
       }
@@ -47,7 +49,7 @@ class Chat implements MessageComponentInterface {
 
     public function onMessage(ConnectionInterface $from, $msg) {
       global $usuarios;
-     
+      global $usuarios_colores;
 
        $numRecv = count($this->clients) - 1;
        echo sprintf('El usuario %d esta enviando el mensaje: "%s" to %d other connection%s' . "\n"
@@ -58,12 +60,21 @@ class Chat implements MessageComponentInterface {
      
 
     
-
+        if($usuarios[$from->resourceId]['event'] == "iniciando juego"){
         if(count($this->clients) >= 2){
           foreach($this->clients as $client){
             $client->send(json_encode($usuarios));
           }
       }
+    }
+
+
+    if($usuarios_colores[$from->resourceId]['event'=="jugando"]){
+      foreach($this->clients as $client){
+        $client->send(json_encode($usuarios_colores[$from->resourceId]));
+      }
+    }
+
     } 
 
     public function onClose(ConnectionInterface $conn) {
@@ -79,4 +90,3 @@ class Chat implements MessageComponentInterface {
       $conn->close();
     }
 }
-?>
