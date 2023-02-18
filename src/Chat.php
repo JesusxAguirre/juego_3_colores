@@ -6,7 +6,7 @@ use Usuarios;
 
 
 $usuarios= array();
-$colores = ["green","blue"];
+$colores = [0=>"green",1=>"blue"];
 $contador = 0;
 class Chat implements MessageComponentInterface {
     protected $clients;
@@ -26,6 +26,13 @@ class Chat implements MessageComponentInterface {
       $fecha_actual = date("d-m-Y h:i:s");
       //$usuarios["id_usuario"]=$conn->resourceId;
 
+      if($usuarios[007]["2jugadores"]){
+        
+        foreach($this->clients as $client){
+          $client->send(json_encode($usuarios));
+        }
+        unset($usuarios);
+      }
       echo "Nueva conexion $fecha_actual ({$conn->resourceId})  \n";
     }
     
@@ -42,6 +49,10 @@ class Chat implements MessageComponentInterface {
       $usuarios[$from->resourceId]=  json_decode($msg,true);
       $usuarios[$from->resourceId]["color"] = $colores[$contador];
       $contador++;
+      if($contador == 2){
+        $usuarios[007]["2jugadores"] = True;
+      }
+
         if(count($this->clients) >= 2){
           foreach($this->clients as $client){
             $client->send(json_encode($usuarios));
