@@ -23,6 +23,7 @@ class Chat implements MessageComponentInterface {
       $this->clients->attach($conn);
       $fecha_actual = date("d-m-Y h:i:s");
       $usuarios["id_usuario"]=$conn->resourceId;
+      
   
       foreach($this->clients as $client){
         $client->send(json_encode($usuarios));
