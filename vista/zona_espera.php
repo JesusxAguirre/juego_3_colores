@@ -26,7 +26,7 @@
       </div>
    
   </div>
-
+<input hidden type="text" value="<?php echo $_SESSION['jugador']; ?>">
 </body>
 
 </html>
