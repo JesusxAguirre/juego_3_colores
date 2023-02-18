@@ -6,7 +6,7 @@ $(document).ready(function (e) {
 objeto_websocket.onmessage = function (e) {
   var data = JSON.parse(e.data);
   console.log(data)
-
+  
 
 
 }

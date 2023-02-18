@@ -21,16 +21,22 @@ class Chat implements MessageComponentInterface {
     }
   
     public function onOpen(ConnectionInterface $conn) {
-      global $usuarios;
-      
+
       $this->clients->attach($conn);
       $fecha_actual = date("d-m-Y h:i:s");
-      //$usuarios["id_usuario"]=$conn->resourceId;
+   
 
-      if($usuarios[007]["2jugadores"]){
+      if(count($this->clients) >= 2){
+        $background_colors = array('#282E33', '#25373A', '#164852', '#495E67', '#FF3838');
+
+        $count = count($background_colors) - 1;
+    
+        $i = rand(0, $count);
         
         foreach($this->clients as $client){
-          $client->send(json_encode($usuarios));
+          $usuarios["color"] =   $background_colors[$i];
+          $usuarios["id"] = $conn->resourceId;
+          $conn->send(json_encode($usuarios));
         }
         unset($usuarios);
       }
@@ -39,12 +45,8 @@ class Chat implements MessageComponentInterface {
     
 
     public function onMessage(ConnectionInterface $from, $msg) {
-       global $usuarios;
-       $background_colors = array('#282E33', '#25373A', '#164852', '#495E67', '#FF3838');
-
-       $count = count($background_colors) - 1;
-   
-       $i = rand(0, $count);
+      
+    
    
 
        $numRecv = count($this->clients) - 1;
@@ -53,11 +55,9 @@ class Chat implements MessageComponentInterface {
       
       
       $usuarios[$from->resourceId]=  json_decode($msg,true);
-      $usuarios[$from->resourceId]["color"] =   $background_colors[$i];
+     
+
     
-      if(count($usuarios) ==2 ){
-        $usuarios[007]["2jugadores"] = True;
-      }
 
         if(count($this->clients) >= 2){
           foreach($this->clients as $client){

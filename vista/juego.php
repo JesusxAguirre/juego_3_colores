@@ -17,6 +17,7 @@
   <div class="container" style="position: relative;">
     <div class="rowr">
     <input id="usuario" hidden type="text" value="<?php echo $_SESSION['jugador']; ?>">
+    <h1><?php echo $_SESSION['resourceId'] ?></h1>
     <button id="1" type="button" style="margin-top: 20em; margin-left: 10px;" class="btn btn-light col-3">Presiona</button> 
     <button id="2" type="button" style="margin-top: 20em; margin-left: 10px;" class="btn btn-light col-3">Presiona</button> 
     <button id="3" type="button" style="margin-top: 20em; margin-left: 10px;" class="btn btn-light col-3">Presiona</button>

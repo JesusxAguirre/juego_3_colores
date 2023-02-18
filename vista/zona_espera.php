@@ -27,9 +27,6 @@
    
   </div>
 <input id="usuario" hidden type="text" value="<?php echo $_SESSION['jugador']; ?>">
-<form action="?pagina=juego" id="zona">
-  <input hidden id="resourceId" value="" type="text">
-</form>
 <script src="static/js/zona_espera.js"></script>
 </body>
 
