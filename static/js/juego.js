@@ -2,7 +2,6 @@ $(document).ready(function (e) {
   //creando objeto websocket
   var objeto_websocket = new WebSocket("ws://localhost:8080");
   var nombre_usuario = $("#usuario").val()
-  var color_usuario 
   var data
   var boton_1 = document.getElementById("1")
   var boton_2 = document.getElementById("2")
@@ -10,30 +9,33 @@ $(document).ready(function (e) {
   var usuarios
   objeto_websocket.onmessage = function (e) {
     data = JSON.parse(e.data);
-    
 
+    console.log(data)
     if (data.event == "jugando") {
+      console.log("entra al bucle de switch ")
       switch (data.boton) {
         case "1":
           boton_1.style.background = data.color
-        break
+          break
         case "2":
           boton_2.style.background = data.color
-        break
+          break
         case "3":
           boton_3.style.background = data.color
-        break
+          break
       }
-    
 
-      if(boton_1.style.background == usuarios.color &&  boton_2.style.background == usuarios.color && boton_3.style.background == usuarios.color)[
-        objeto_websocket.send(JSON.stringify(usuarios))
-      ]
+      if (boton_1.style.background == data.color && boton_2.style.background == data.color && boton_3.style.background == data.color) {
+        var ganar = {
+          event: "ganar",
+        }
+        objeto_websocket.send(JSON.stringify(ganar))
+      }
     }
   }
   $("#1").on('click', function () {
 
-     usuarios = {
+    usuarios = {
       event: "jugando",
       id: data.id,
       color: data.color,
@@ -51,7 +53,7 @@ $(document).ready(function (e) {
       event: "jugando",
       id: data.id,
       color: data.color,
-      boton: "1",
+      boton: "2",
     }
     objeto_websocket.send(JSON.stringify(usuarios))
 
@@ -63,7 +65,7 @@ $(document).ready(function (e) {
       event: "jugando",
       id: data.id,
       color: data.color,
-      boton: "1",
+      boton: "3",
     }
     objeto_websocket.send(JSON.stringify(usuarios))
 
