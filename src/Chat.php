@@ -41,7 +41,7 @@ class Chat implements MessageComponentInterface
       echo "Entro a el bucle asdasdas ({$conn->resourceId})  \n";
 
       $usuarios_colores[$conn->resourceId]["color"] =   $background_colors[$i];
-      $usuarios_colores[$conn->resourceId]["event"] =   "jugando";
+      $usuarios_colores[$conn->resourceId]["event"] =   "gaming";
       $usuarios_colores[$conn->resourceId]["id"] = $conn->resourceId;
       $usuarios_colores[$conn->resourceId]["boton"] = "";
       $conn->send(json_encode($usuarios_colores[$conn->resourceId]));
@@ -78,7 +78,7 @@ class Chat implements MessageComponentInterface
     }
 
     if ($contador >= 3) {
-      if ($usuarios_colores[$from->resourceId]['event'] == "jugando") {
+      if ($usuarios_colores[$from->resourceId]['event'] == "gaming") {
         $array_botones = json_decode($msg,true);
         if($array_botones['boton'] == "ganar"){
           $from->send(json_encode($array_botones));
