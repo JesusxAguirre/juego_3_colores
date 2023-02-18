@@ -21,7 +21,7 @@ objeto_websocket.onmessage = function (e) {
     var data = JSON.parse(e.data);
     console.log(data)
 
-    if(data.nombre_usuario == nombre_usuario){
+    if(data.usuario == nombre_usuario){
     window.location = "index.php?pagina=juego";
     }
   }
