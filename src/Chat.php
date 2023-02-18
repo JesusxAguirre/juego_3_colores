@@ -22,6 +22,7 @@ class Chat implements MessageComponentInterface {
   
     public function onOpen(ConnectionInterface $conn) {
       global $usuarios;
+      
       $this->clients->attach($conn);
       $fecha_actual = date("d-m-Y h:i:s");
       //$usuarios["id_usuario"]=$conn->resourceId;

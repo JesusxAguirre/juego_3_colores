@@ -17,8 +17,9 @@ objeto_websocket.onopen = function (e) {//cuando la conexion se abre
 
 
 objeto_websocket.onmessage = function (e) {
-
-    window.location = "index.php?pagina=juego";
+    console.log(e.data);
+    var data = JSON.parse(e.data);
+    
     
   }
 
