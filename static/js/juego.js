@@ -9,10 +9,8 @@ $(document).ready(function (e) {
   var usuarios
   objeto_websocket.onmessage = function (e) {
     data = JSON.parse(e.data);
+    console.log(data)
 
-    if(data.boton == "ganar"){
-      setTimeout(redireccion, 0000);
-    }
     if (data.boton in ["1","2","3","ganar"]) {
       console.log("entra en el bulce")
       switch (data.boton) {
@@ -34,18 +32,17 @@ $(document).ready(function (e) {
       }
 
       if (boton_1.style.background == boton_3.style.background && boton_1.style.background == boton_2.style.background ) {
-        var ganar = {
-          id: data.id,
-          boton: "ganar",
-          event: "gaming"
+        if(data.nombre == nombre_usuario){
+          setTimeout(redireccion, 0000);
         }
-        objeto_websocket.send(JSON.stringify(ganar))
+        //objeto_websocket.send(JSON.stringify(ganar))
       }
     }
   }
   $("#1").on('click', function () {
 
     usuarios = {
+      nombre: nombre_usuario,
       event: "gaming",
       id: data.id,
       color: data.color,
@@ -60,6 +57,7 @@ $(document).ready(function (e) {
 
   $("#2").on('click', function () {
     var usuarios = {
+      nombre: nombre_usuario,
       event: "gaming",
       id: data.id,
       color: data.color,
@@ -72,6 +70,7 @@ $(document).ready(function (e) {
 
   $("#3").on('click', function () {
     var usuarios = {
+      nombre: nombre_usuario,
       event: "gaming",
       id: data.id,
       color: data.color,
