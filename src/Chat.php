@@ -7,7 +7,7 @@ use Usuarios;
 
 $usuarios= array();
 
-
+$contador = 0;
 class Chat implements MessageComponentInterface {
     protected $clients;
 
@@ -21,33 +21,33 @@ class Chat implements MessageComponentInterface {
     }
   
     public function onOpen(ConnectionInterface $conn) {
-
+      global  $contador;
+      $contador++;
       $this->clients->attach($conn);
       $fecha_actual = date("d-m-Y h:i:s");
    
 
-      if(count($this->clients) >= 2){
-        $background_colors = array('#282E33', '#25373A', '#164852', '#495E67', '#FF3838');
+      if($contador >= 3){
+        $background_colors = array('#AEF520', '#2026F5', '#DC1A75', '#DC1A1A', '#1ADC61');
 
         $count = count($background_colors) - 1;
     
         $i = rand(0, $count);
         echo "Entro a el bucle asdasdas ({$conn->resourceId})  \n";
-        foreach($this->clients as $client){
+        
           $usuarios["color"] =   $background_colors[$i];
           $usuarios["id"] = $conn->resourceId;
           $conn->send(json_encode($usuarios));
-          unset($usuarios);
-        }
+        
+       
       }
       echo "Nueva conexion $fecha_actual ({$conn->resourceId})  \n";
     }
     
 
     public function onMessage(ConnectionInterface $from, $msg) {
-      
-    
-   
+      global $usuarios;
+     
 
        $numRecv = count($this->clients) - 1;
        echo sprintf('El usuario %d esta enviando el mensaje: "%s" to %d other connection%s' . "\n"
