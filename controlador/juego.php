@@ -11,7 +11,7 @@ if ($_SESSION['jugador']){
 
 if (is_file('vista/'.$pagina.'.php')) {
 
-
+  echo $_SESSION['jugador'];
    
     require_once 'vista/'.$pagina.'.php';
 }else {

@@ -16,7 +16,7 @@
 <body class="h-100" style="background-color: #eee;">
   <div class="container" style="position: relative;">
     <div class="rowr">
-
+    <input id="usuario" hidden type="text" value="<?php echo $_SESSION['jugador']; ?>">
     <button type="button" style="margin-top: 20em; margin-left: 10px;" class="btn btn-light col-3">Presiona</button> 
     <button type="button" style="margin-top: 20em; margin-left: 10px;" class="btn btn-light col-3">Presiona</button> 
     <button type="button" style="margin-top: 20em; margin-left: 10px;" class="btn btn-light col-3">Presiona</button>
