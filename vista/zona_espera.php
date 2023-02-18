@@ -26,7 +26,7 @@
       </div>
    
   </div>
-<input hidden type="text" value="<?php echo $_SESSION['jugador']; ?>">
+<input id="usuario" hidden type="text" value="<?php echo $_SESSION['jugador']; ?>">
 <script src="static/js/zona_espera.js"></script>
 </body>
 

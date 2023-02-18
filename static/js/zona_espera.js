@@ -9,7 +9,7 @@ objeto_websocket.onopen = function (e) {//cuando la conexion se abre
         
         var data = {
             event: "iniciando juego",
-            nombre_usuario: nombre_usuario,
+            usuario: nombre_usuario,
         }
         console.log(data)
         objeto_websocket.send(JSON.stringify(data))
