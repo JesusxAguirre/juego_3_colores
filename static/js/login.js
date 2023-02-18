@@ -66,5 +66,5 @@ if (error == false) {
   const myTimeout = setTimeout(redireccion, 2000);
 }
   function redireccion() {
-    window.location = "index.php?pagina=zona_espera.php";
+    window.location = "index.php?pagina=zona_espera";
   }

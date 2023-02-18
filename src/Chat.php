@@ -4,7 +4,8 @@ use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
 use Usuarios;
 
-$data= array();
+
+$usuarios= array();
 class Chat implements MessageComponentInterface {
     protected $clients;
 
@@ -18,13 +19,13 @@ class Chat implements MessageComponentInterface {
     }
   
     public function onOpen(ConnectionInterface $conn) {
+      global $usuarios;
       $this->clients->attach($conn);
       $fecha_actual = date("d-m-Y h:i:s");
-      $data["event"] = "iniciar";
-      $data["mensaje"] = "el usuario {$conn->resourceId} ha entrado en el Chat";
-
+      $usuarios["id_usuario"]=$conn->resourceId;
+  
       foreach($this->clients as $client){
-        $client->send(json_encode($data));
+        $client->send(json_encode($usuarios));
       }
       echo "Nueva conexion $fecha_actual ({$conn->resourceId})  \n";
     }
