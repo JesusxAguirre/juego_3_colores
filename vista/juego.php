@@ -15,9 +15,9 @@
 
 <body class="h-100" style="background-color: #eee;">
   <div class="container" style="position: relative;">
-    <div class="rowr">
+    <div class="row">
     <input id="usuario" hidden type="text" value="<?php echo $_SESSION['jugador']; ?>">
-    <h1><?php echo $_SESSION['resourceId'] ?></h1>
+  <h1 class="text-center"> Es el momento de jugar <?php echo $_SESSION['jugador']?></h1>
     <button id="1" type="button" style="margin-top: 20em; margin-left: 10px;" class="btn btn-light col-3">Presiona</button> 
     <button id="2" type="button" style="margin-top: 20em; margin-left: 10px;" class="btn btn-light col-3">Presiona</button> 
     <button id="3" type="button" style="margin-top: 20em; margin-left: 10px;" class="btn btn-light col-3">Presiona</button>

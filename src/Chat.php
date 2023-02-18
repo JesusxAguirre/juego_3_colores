@@ -32,13 +32,13 @@ class Chat implements MessageComponentInterface {
         $count = count($background_colors) - 1;
     
         $i = rand(0, $count);
-        
+        echo "Entro a el bucle asdasdas ({$conn->resourceId})  \n";
         foreach($this->clients as $client){
           $usuarios["color"] =   $background_colors[$i];
           $usuarios["id"] = $conn->resourceId;
           $conn->send(json_encode($usuarios));
+          unset($usuarios);
         }
-        unset($usuarios);
       }
       echo "Nueva conexion $fecha_actual ({$conn->resourceId})  \n";
     }
