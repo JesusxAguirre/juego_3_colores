@@ -39,10 +39,11 @@ class Chat implements MessageComponentInterface {
       
       
       $usuarios[$from->resourceId]=  json_decode($msg,true);
-         
-        foreach($this->clients as $client){
-          $client->send(json_encode($usuarios));
-        }
+        if(count($this->clients) >= 2){
+          foreach($this->clients as $client){
+            $client->send(json_encode($usuarios));
+          }
+      }
     } 
 
     public function onClose(ConnectionInterface $conn) {
