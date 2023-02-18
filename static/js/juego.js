@@ -13,6 +13,8 @@ $(document).ready(function (e) {
     console.log(data)
     if (data.event == "jugando") {
       console.log("entra al bucle de switch ")
+      console.log(boton_1.style.background)
+      console.log(data.color)
       switch (data.boton) {
         case "1":
           boton_1.style.background = data.color
@@ -25,7 +27,7 @@ $(document).ready(function (e) {
           break
       }
 
-      if (boton_1.style.background == data.color && boton_2.style.background == data.color && boton_3.style.background == data.color) {
+      if (boton_1.style.background == boton_3.style.background && boton_1.style.background == boton_2.style.background ) {
         var ganar = {
           event: "ganar",
         }

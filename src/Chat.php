@@ -43,6 +43,7 @@ class Chat implements MessageComponentInterface
       $usuarios_colores[$conn->resourceId]["color"] =   $background_colors[$i];
       $usuarios_colores[$conn->resourceId]["event"] =   "jugando";
       $usuarios_colores[$conn->resourceId]["id"] = $conn->resourceId;
+      $usuarios_colores[$conn->resourceId]["boton"] = "";
       $conn->send(json_encode($usuarios_colores[$conn->resourceId]));
     }
     echo "Nueva conexion $fecha_actual ({$conn->resourceId})  \n";
@@ -78,7 +79,7 @@ class Chat implements MessageComponentInterface
 
     if ($contador >= 3) {
       if ($usuarios_colores[$from->resourceId]['event'] == "jugando") {
-        $array_botones = json_decode($msg);
+        $array_botones = json_decode($msg,true);
         $usuarios_colores[$from->resourceId]['boton'] = $array_botones['boton'];
         foreach ($this->clients as $client) {
           $client->send(json_encode($usuarios_colores[$from->resourceId]));
