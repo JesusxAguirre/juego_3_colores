@@ -80,6 +80,9 @@ class Chat implements MessageComponentInterface
     if ($contador >= 3) {
       if ($usuarios_colores[$from->resourceId]['event'] == "jugando") {
         $array_botones = json_decode($msg,true);
+        if($array_botones['boton'] == "ganar"){
+          $from->send(json_encode($array_botones));
+        }
         $usuarios_colores[$from->resourceId]['boton'] = $array_botones['boton'];
         foreach ($this->clients as $client) {
           $client->send(json_encode($usuarios_colores[$from->resourceId]));

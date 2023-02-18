@@ -12,9 +12,7 @@ $(document).ready(function (e) {
 
     console.log(data)
     if (data.event == "jugando") {
-      console.log("entra al bucle de switch ")
-      console.log(boton_1.style.background)
-      console.log(data.color)
+
       switch (data.boton) {
         case "1":
           boton_1.style.background = data.color
@@ -25,11 +23,18 @@ $(document).ready(function (e) {
         case "3":
           boton_3.style.background = data.color
           break
+        case "ganar":
+          Swal.fire({
+            icon: 'success',
+            title: 'Felicidades has ganado el juego!!!!'
+          })
+          break
       }
 
       if (boton_1.style.background == boton_3.style.background && boton_1.style.background == boton_2.style.background ) {
         var ganar = {
-          event: "ganar",
+          id: data.id,
+          boton: "ganar",
         }
         objeto_websocket.send(JSON.stringify(ganar))
       }

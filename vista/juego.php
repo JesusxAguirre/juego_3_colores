@@ -18,9 +18,9 @@
     <div class="row">
     <input id="usuario" hidden type="text" value="<?php echo $_SESSION['jugador']; ?>">
   <h1 class="text-center"> Es el momento de jugar <?php echo $_SESSION['jugador']?></h1>
-    <button id="1" type="button" style="margin-top: 20em; margin-left: 10px;" class="btn btn-light col-3">Presiona</button> 
-    <button id="2" type="button" style="margin-top: 20em; margin-left: 10px;" class="btn btn-light col-3">Presiona</button> 
-    <button id="3" type="button" style="margin-top: 20em; margin-left: 10px;" class="btn btn-light col-3">Presiona</button>
+    <button id="1" type="button" style="margin-top: 20em; margin-left: 10px; background-color: #DDFEFF" class="btn  col-3">Presiona</button> 
+    <button id="2" type="button" style="margin-top: 20em; margin-left: 10px; background-color: #E0FEFF" class=" col-3">Presiona</button> 
+    <button id="3" type="button" style="margin-top: 20em; margin-left: 10px; background-color: #D3FDFF " class="btn col-3">Presiona</button>
     </div>
 
 
