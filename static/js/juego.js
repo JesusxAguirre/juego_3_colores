@@ -11,7 +11,18 @@ objeto_websocket.onmessage = function (e) {
 
 }
   
+$("#1").click(function(){
 
+  $("1").css("background-color","" + data.color + "");
+})
+$("#2").click(function(){
+
+  $("2").css("background-color","" + data.color + "");
+})
+$("#3").click(function(){
+
+  $("3").css("background-color","" + data.color + "");
+})
 
 
   })
