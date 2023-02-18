@@ -6,8 +6,8 @@ use Usuarios;
 
 
 $usuarios= array();
-$colores = [0=>"green",1=>"blue"];
-$contador = 0;
+
+$colores = array('#282E33', '#25373A', '#164852', '#495E67', '#FF3838');
 class Chat implements MessageComponentInterface {
     protected $clients;
 
@@ -39,7 +39,6 @@ class Chat implements MessageComponentInterface {
 
     public function onMessage(ConnectionInterface $from, $msg) {
        global $usuarios;
-       global $contador;
        global $colores;
        $numRecv = count($this->clients) - 1;
        echo sprintf('El usuario %d esta enviando el mensaje: "%s" to %d other connection%s' . "\n"
@@ -47,9 +46,9 @@ class Chat implements MessageComponentInterface {
       
       
       $usuarios[$from->resourceId]=  json_decode($msg,true);
-      $usuarios[$from->resourceId]["color"] = $colores[$contador];
-      $contador++;
-      if($contador == 2){
+      $usuarios[$from->resourceId]["color"] =  $colores[array_rand($colores)];
+    
+      if(count($usuarios) ==2 ){
         $usuarios[007]["2jugadores"] = True;
       }
 
