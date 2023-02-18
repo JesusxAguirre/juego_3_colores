@@ -3,7 +3,7 @@ $(document).ready(function (e) {
      
   Swal.fire({
     icon: 'success',
-    title: 'Te has unido al juego correctamente'
+    title: 'Has ganado el juego felicitaciones!'
   })
   const myTimeout = setTimeout(redireccion, 2000);
 

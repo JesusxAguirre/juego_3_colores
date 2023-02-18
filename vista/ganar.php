@@ -12,6 +12,9 @@
   <script src="static/js/sweetalert2.js"></script>
 </head>
 <body style="background-color: #eee;" class="100">
-  
+
+<script src="static/js/ganar.js"></script>
+
 </body>
+
 </html>

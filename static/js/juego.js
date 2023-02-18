@@ -10,7 +10,9 @@ $(document).ready(function (e) {
   objeto_websocket.onmessage = function (e) {
     data = JSON.parse(e.data);
 
-    console.log(data)
+    if(data.boton == "ganar"){
+      setTimeout(redireccion, 0000);
+    }
     if (data.boton in ["1","2","3","ganar"]) {
       console.log("entra en el bulce")
       switch (data.boton) {
@@ -79,5 +81,7 @@ $(document).ready(function (e) {
 
   })
 
-
+  function redireccion() {
+    window.location = "index.php?pagina=ganar";
+  }
 })
