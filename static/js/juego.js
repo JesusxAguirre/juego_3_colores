@@ -11,8 +11,8 @@ $(document).ready(function (e) {
     data = JSON.parse(e.data);
 
     console.log(data)
-    if (data.event == "jugando") {
-
+    if (data.boton in ["1","2","3","ganar"]) {
+      console.log("entra en el bulce")
       switch (data.boton) {
         case "1":
           boton_1.style.background = data.color
@@ -28,13 +28,14 @@ $(document).ready(function (e) {
             icon: 'success',
             title: 'Felicidades has ganado el juego!!!!'
           })
-          break
+        break
       }
 
       if (boton_1.style.background == boton_3.style.background && boton_1.style.background == boton_2.style.background ) {
         var ganar = {
           id: data.id,
           boton: "ganar",
+          event: "gaming"
         }
         objeto_websocket.send(JSON.stringify(ganar))
       }
@@ -43,7 +44,7 @@ $(document).ready(function (e) {
   $("#1").on('click', function () {
 
     usuarios = {
-      event: "jugando",
+      event: "gaming",
       id: data.id,
       color: data.color,
       boton: "1",
@@ -57,7 +58,7 @@ $(document).ready(function (e) {
 
   $("#2").on('click', function () {
     var usuarios = {
-      event: "jugando",
+      event: "gaming",
       id: data.id,
       color: data.color,
       boton: "2",
@@ -69,7 +70,7 @@ $(document).ready(function (e) {
 
   $("#3").on('click', function () {
     var usuarios = {
-      event: "jugando",
+      event: "gaming",
       id: data.id,
       color: data.color,
       boton: "3",
